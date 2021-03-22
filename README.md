@@ -9,4 +9,8 @@ In this problem I had booking cancellations data which consists of 119390 sample
 ![Screen Shot 2021-03-22 at 2 59 55 PM](https://user-images.githubusercontent.com/70813394/111969196-fb391000-8b1f-11eb-8425-7b05747f994f.png)
 
 After the data cleaning and analysis of numerical features I have used Bayesian Target encoding for the categorical features as they had high cardinality.
+I have used spliting of the data in a training set and a validation set and used Extra Gradient Boosting classifier to build the classification model. The very first model produced the Accuracy rate and F1 Score as exactly 1.0 on the validation set, which indicates I have the data leakage problem in my model. 
+The correlation analysis (using heatmap) showed that the feature 'reservation_status' has exactly 1.0 correlation with the target variable, which is quite unusual and it indicates that this feature could be our leaky variable. Removing that leaky variable my model performed well on the test set. (which was sampled out before the data processing)
+
+On the test set my model produced Accuracy score ~ 0.87, F1 score ~ 0.81 and the AUC score ~ 0.94 .
 
